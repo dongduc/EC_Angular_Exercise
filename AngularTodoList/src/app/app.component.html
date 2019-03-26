@@ -1,0 +1,31 @@
+<h1>
+  {{ title }}
+</h1>
+
+<input type="text" #newTodo>
+<button (click)="addTodo(newTodo.value); newTodo.value=''">Add</button>
+
+<ul>
+  <li *ngFor="let todo of todos" [ngClass]="{'todoColor': todo.Complete===true}">
+    Task name: {{todo.TaskName}} Completed: {{todo.Complete}}
+    <button (click)="deleteTodo(todo)">Delete</button>
+  </li>
+</ul>
+
+<!-- <table>
+  <tr>
+    <th>Task name</th>
+    <th>Completed</th>
+    <th>Actions</th>
+  </tr>
+  <tr *ngFor="let todo of todos" [ngClass]="{'todoColor': todo.Compete===true}">
+    <td>{{todo.TaskName}}</td>
+    <td>{{todo.Complete}}</td>
+    <td>
+      <button (click)="deleteTodo(todo)">Delete</button>
+    </td>
+  </tr>
+</table> -->
+
+
+
