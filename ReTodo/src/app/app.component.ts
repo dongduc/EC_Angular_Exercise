@@ -17,13 +17,14 @@ export class AppComponent {
     this.name = '';
     this.isComplete = false;
     this.todos = [
-      { name: "Duc 1", isComplete: true },
-      { name: "Duc 2", isComplete: true }
+      { id: new Date, name: "Duc 1", isComplete: true },
+      { id: new Date, name: "Duc 2", isComplete: true }
     ];
   }
 
   addTodo($event) {
     this.todo = {
+      id: new Date,
       name: $event,
       isComplete: this.isComplete
     };
@@ -34,11 +35,23 @@ export class AppComponent {
 
   deleteTodo($event)
   {
-    this.todos.splice($event, 1);
+    this.todos = this.todos.filter(data => {
+      return data.id != $event;
+    });
+  }
+
+  completeTodo($event){
+    console.log($event);
+    this.todos.forEach(element => {
+      if(element.id == $event){
+        element.isComplete = !element.isComplete;
+      }
+    });
   }
 }
 
 export class Todo {
+  id: any;
   name: string;
   isComplete: boolean;
 }

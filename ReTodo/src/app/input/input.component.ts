@@ -16,7 +16,7 @@ export class InputComponent implements OnInit {
   ngOnInit() {
   }
 
-  AddTodo(value){
+  addTodo(value){
     this.eventAddTodo.emit(value);
   }
 }

@@ -11,22 +11,23 @@ export class ListComponent implements OnInit {
   @Input()
   public lists: Todo[] = [];
 
-  public index;
+  @Output()
+  public eventDeleteListItem = new EventEmitter();
 
   @Output()
-  public eventDeleteList = new EventEmitter();
+  public eventCompleteListItem = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  getIndex($event){
-    this.index = $event;
+  deleteListItem($event) {
+    this.eventDeleteListItem.emit($event);
   }
 
-  deleteTodo(index){
-    this.eventDeleteList.emit(index);
+  completeListItem($event) {
+    this.eventCompleteListItem.emit($event);
   }
 
 }

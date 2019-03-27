@@ -14,13 +14,20 @@ export class ItemComponent implements OnInit {
   @Output()
   public eventDeleteItem = new EventEmitter();
 
+  @Output()
+  public eventCompleteItem = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
   }
 
-  deleteTodo(index) {
-    this.eventDeleteItem.emit(index);
+  deleteItem(id) {
+    this.eventDeleteItem.emit(id);
+  }
+
+  completeItem(id) {
+    this.eventCompleteItem.emit(id);
   }
 
 }
