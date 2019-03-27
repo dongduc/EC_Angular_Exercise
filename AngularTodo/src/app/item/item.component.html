@@ -1,0 +1,9 @@
+<ul *ngFor="let item of items; let i=index">
+    <li>
+        {{item.name}} {{item.isComplete}}
+
+        <button>Complete</button>
+        <button (click)="deleteTodo(i)">Delete</button>
+    </li>
+
+</ul>

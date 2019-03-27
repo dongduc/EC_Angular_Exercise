@@ -1,0 +1,3 @@
+<h1>Todo list</h1>
+<app-input (eventAddTodo)="addTodo($event)"></app-input>
+<app-list [lists]="todos" (eventDeleteList)="deleteTodo($event)"></app-list>
