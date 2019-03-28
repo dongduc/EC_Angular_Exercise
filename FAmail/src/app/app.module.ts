@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './component/header/header.component';
 import { MessageComponent } from './component/message/message.component';
+import { MessageService } from './services/message.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,9 @@ import { MessageComponent } from './component/message/message.component';
     AppRoutingModule,
     
   ],
-  providers: [],
+  providers: [
+    MessageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -889,4 +889,8 @@ export class MessageService {
   ];
 
   constructor() { }
+
+  getData(){
+    return this.messageData;
+  }
 }
