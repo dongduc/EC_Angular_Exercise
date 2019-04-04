@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { DataService } from "src/app/services/data.service";
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl, Title } from '@angular/platform-browser';
 
 @Component({
   selector: "app-youtube",
@@ -14,7 +14,7 @@ export class YoutubeComponent implements OnInit {
   url = "https://www.youtube.com/embed/";
   urlPreviewVideo: SafeResourceUrl;
 
-  constructor(private dataService: DataService, private sanitizer: DomSanitizer) {}
+  constructor(private dataService: DataService, private sanitizer: DomSanitizer, private titleService: Title) {}
 
   ngOnInit() {}
 
@@ -27,7 +27,8 @@ export class YoutubeComponent implements OnInit {
     });
   }
 
-  previewVideo(id: string) {
+  previewVideo(id: string, titleVideo: string) {
+    this.titleService.setTitle(titleVideo);
     this.urlPreviewVideo = "";
     this.previewStatus = true;
     this.urlPreviewVideo = this.sanitizer.bypassSecurityTrustResourceUrl(this.url + id);

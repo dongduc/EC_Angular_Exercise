@@ -19,7 +19,7 @@
 <div class="card-columns m-5 animated fadeIn">
   <div
     *ngFor="let video of videos.items"
-    (click)="previewVideo(video.id['videoId'])"
+    (click)="previewVideo(video.id['videoId'], video.snippet.title)"
     class="card puntero"
   >
     <img
