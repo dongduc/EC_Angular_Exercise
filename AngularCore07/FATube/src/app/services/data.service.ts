@@ -18,7 +18,7 @@ export class DataService {
       q: name,
       key: this.keyAPI,
       part: 'snippet',
-      maxResults: '5'
+      maxResults: '20'
     }});
   }
 }

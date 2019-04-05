@@ -18,7 +18,7 @@
 </div>
 <div class="card-columns m-5 animated fadeIn">
   <div
-    *ngFor="let video of videos.items"
+    *ngFor="let video of videos.items | paginate: { itemsPerPage: 5, currentPage: p }"
     (click)="previewVideo(video.id['videoId'], video.snippet.title)"
     class="card puntero"
   >
@@ -37,6 +37,8 @@
     </div>
   </div>
 </div>
+
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
 
 <div *ngIf="urlPreviewVideo != null">
     <iframe [src]="urlPreviewVideo" width="960" height="447" frameborder="0" allowfullscreen></iframe>
