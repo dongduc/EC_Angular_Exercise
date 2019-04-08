@@ -23,7 +23,6 @@ export class YoutubeComponent implements OnInit {
     this.urlPreviewVideo = null;
     return this.dataService.getListVideo(search).subscribe((data: any) => {
       this.videos = data;
-      console.log(this.videos);
     });
   }
 
@@ -32,7 +31,6 @@ export class YoutubeComponent implements OnInit {
     this.urlPreviewVideo = "";
     this.previewStatus = true;
     this.urlPreviewVideo = this.sanitizer.bypassSecurityTrustResourceUrl(this.url + id);
-    console.log(this.urlPreviewVideo);
     return this.urlPreviewVideo;
     
   }
