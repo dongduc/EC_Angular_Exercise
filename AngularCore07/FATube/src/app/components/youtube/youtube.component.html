@@ -1,45 +1,42 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <input
-        #search
-        type="text"
-        (keyup.enter)="getYoutube(search.value)"
-        placeholder="Search YouTube"
-        class="form-control"
-      />
+      <input #search type="text" (keyup.enter)="getVideos(search.value)" placeholder="Search YouTube" class="form-control"/>
     </div>
   </div>
-</div>
-
-<div>
-  <div></div>
-  <div></div>  
-</div>
-<div class="card-columns m-5 animated fadeIn">
-  <div
-    *ngFor="let video of videos.items | paginate: { itemsPerPage: 5, currentPage: p }"
-    (click)="previewVideo(video.id['videoId'], video.snippet.title)"
-    class="card puntero"
-  >
-    <img
-      class="card-img-top"
-      [src]="video.snippet.thumbnails.high.url"
-      alt="Card image cap"
-    />
-    <div class="card-body">
-      <h5 class="card-title">{{ video.snippet.title }}</h5>
-      <p class="card-text">
-        <span class="badge badge-pill badge-primary">
-          {{ video.snippet.channelTitle }}
-        </span>
-      </p>
+  <div class="row">
+    <div class="card-columns m-5 animated fadeIn">
+      <div *ngFor="let video of (videos.items | paginate: { itemsPerPage: 5, currentPage: p })" (click)="getVideo(video.id['videoId'])" class="card puntero">
+        <img class="card-img-top" [src]="video.snippet.thumbnails.high.url" alt="Card image cap"/>
+        <div class="card-body">
+          <h5 class="card-title">{{ video.snippet.title }}</h5>
+          <p class="card-text">
+            <span class="badge badge-pill badge-primary">
+              {{ video.snippet.channelTitle }}
+            </span>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-
-<pagination-controls (pageChange)="p = $event"></pagination-controls>
-
-<div *ngIf="urlPreviewVideo != null">
-    <iframe [src]="urlPreviewVideo" width="960" height="447" frameborder="0" allowfullscreen></iframe>
+  <div style="text-align: center">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+  <div *ngIf="urlVideoDetail != null">
+    <div style="text-align: center">
+      <iframe [src]="urlVideoDetail" width="960" height="447" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <h4>{{ titleDetail }}</h4>
+    <p style="color: blue">
+      View count: {{ viewCountDetail }} | Like count: {{ likeCountDetail }} | Dislike count: {{ dislikeCountDetail }} | Favorite count: {{ favoriteCountDetail }} | Comment count: {{ commentCountDetail }}
+    </p>
+    <hr />
+    <h3>
+      <img src="{{ thumbnails }}" alt="Channel picture"> {{ chanelTitileDetail }}
+    </h3>
+    <span *ngFor="let description of descriptionDetail">
+      {{ description }}
+      <br/>
+    </span>
+  </div>
 </div>
